@@ -10,8 +10,11 @@ interface Report {
   approved: boolean;
 }
 
-interface lessonReference {
-  lesson: string;
+interface Lesson {
+  lesson: {
+    group: string;
+    subject: string;
+  };
   days: Date[];
 }
 
@@ -37,5 +40,5 @@ interface DetailedReport {
   sinceDay: Date;
   symptoms: string[];
   attendedSchool: boolean;
-  lessonsAttended: lessonReference[];
+  lessonsAttended: Lesson[];
 }
