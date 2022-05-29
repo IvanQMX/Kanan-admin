@@ -104,10 +104,23 @@ export default function Report() {
 
   const removeReport = () => {
     displayLoadingMessage("Cargando");
-    setTimeout(() => {
-      Swal.close();
-      displaySuccessMessage("Reporte descartado y eliminado");
-    }, 1500);
+    axios
+      .delete(
+        "https://kanan.azurewebsites.net/api/DeleteReport?code=TEiPWLD7rE4YJd9nJxqpxLcQZAo7-aBn2UxGqeCToIYBAzFuYNEZpQ==",
+        {
+          data: {
+            id,
+          },
+        }
+      )
+      .then((response) => {
+        Swal.close();
+        displaySuccessMessage("Reporte descartado y eliminado");
+      })
+      .catch((error) => {
+        displayErrorMessage("No se pudo descartar y eliminar el reporte. Inténtelo más tarde");
+        console.error(error);
+      });
   };
 
   if (reportReady === undefined) {
