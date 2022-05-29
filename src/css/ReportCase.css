@@ -1,0 +1,22 @@
+.radio-button {
+    @apply h-4 w-4 accent-indigo-600
+}
+
+.checkbox-button {
+    @apply h-4 w-4 accent-indigo-500 border-gray-300 rounded
+}
+.table-lesson-th {
+    @apply border border-indigo-700 px-4 py-0.5
+}
+
+.table-lesson-td {
+    @apply border border-gray-300
+}
+
+.lesson-button {
+    @apply w-full text-center hover:bg-gray-300 bg-gray-200 px-1 py-0.5 
+}
+
+.lesson-button-active {
+    @apply w-full text-center hover:bg-indigo-400 bg-indigo-300 px-1 py-0.5
+}
