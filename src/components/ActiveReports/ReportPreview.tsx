@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ReportPreview({ date, studentID, hasTestPhoto, sinceDay, symptoms }: ReportPreview) {
+export default function ReportPreview({ _id, date, studentID, hasTestPhoto, sinceDay, symptoms }: ReportPreview) {
   return (
     <div>
       <div className="mt-5 md:mt-0 md:col-span-2 h-full">
@@ -27,7 +27,7 @@ export default function ReportPreview({ date, studentID, hasTestPhoto, sinceDay,
             </div>
             <div className="text-center">
               <Link
-                to={`/reporte?id=${studentID}`}
+                to={`/reporte?id=${_id}`}
                 type="button"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >

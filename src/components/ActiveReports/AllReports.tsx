@@ -66,9 +66,10 @@ export default function ReportCase() {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           {reports
             .sort((a, b) => b.date.getTime() - a.date.getTime())
-            .map(({ date, studentID, hasTestPhoto, sinceDay, symptoms }, index) => (
+            .map(({ _id, date, studentID, hasTestPhoto, sinceDay, symptoms }, index) => (
               <ReportPreview
                 key={index}
+                _id={_id}
                 date={date}
                 studentID={studentID}
                 hasTestPhoto={hasTestPhoto}

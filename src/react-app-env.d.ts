@@ -1,14 +1,12 @@
 /// <reference types="react-scripts" />
 
 interface Report {
+  _id: string;
   date: Date;
   studentID: string;
   hasTestPhoto: boolean;
-  testPhoto: string;
   sinceDay: Date;
   symptoms: string[];
-  attendedSchool: boolean;
-  lessonsAttended: lessonReference[];
   approved: boolean;
 }
 
@@ -18,6 +16,7 @@ interface lessonReference {
 }
 
 interface ReportPreview {
+  _id: string;
   date: Date;
   studentID: string;
   hasTestPhoto: boolean;
@@ -25,10 +24,18 @@ interface ReportPreview {
   symptoms: string[];
 }
 
-type Session = [
-  null|string, React.Dispatch<React.SetStateAction<null|string>>
-]
+type Session = [null | string, React.Dispatch<React.SetStateAction<null | string>>];
 
-interface Login {
-  sessionState: Session
+interface DetailedReport {
+  date: Date;
+  studentID: string;
+  fullName: string;
+  email: string;
+  telephone: string;
+  hasTestPhoto: boolean;
+  testPhoto: File;
+  sinceDay: Date;
+  symptoms: string[];
+  attendedSchool: boolean;
+  lessonsAttended: lessonReference[];
 }
