@@ -1,10 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { PaperClipIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import Lesson from "./Lesson";
+
+const displaySuccessMessage = (message: string) => {
+  Swal.fire({
+    title: message,
+    icon: "success",
+    confirmButtonText: "Aceptar",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = "/reportes";
+    }
+  });
+};
 
 const displayErrorMessage = (message: string) => {
   Swal.fire({
@@ -82,6 +94,22 @@ export default function Report() {
       });
   }, []);
 
+  const approveReport = () => {
+    displayLoadingMessage("Cargando");
+    setTimeout(() => {
+      Swal.close();
+      displaySuccessMessage("Reporte aprobado y notificado");
+    }, 1500);
+  };
+
+  const removeReport = () => {
+    displayLoadingMessage("Cargando");
+    setTimeout(() => {
+      Swal.close();
+      displaySuccessMessage("Reporte descartado y eliminado");
+    }, 1500);
+  };
+
   if (reportReady === undefined) {
     return <Fragment />;
   }
@@ -153,7 +181,9 @@ export default function Report() {
               <dt className="text-sm font-medium text-gray-500">Clases a las que asistió</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 mb-4">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
-                  {report.lessonsAttended.map(({lesson, days})=><Lesson lesson={lesson} days={days}/>)}
+                  {report.lessonsAttended.map(({ lesson, days }, index) => (
+                    <Lesson key={index} lesson={lesson} days={days} />
+                  ))}
                 </div>
               </dd>
             </div>
@@ -164,6 +194,20 @@ export default function Report() {
             </div>
           )}
         </dl>
+      </div>
+      <div className="flex px-4 py-5 sm:px-6 justify-center">
+        <button
+          className="text-white font-medium rounded bg-green-600 hover:bg-green-700 px-4 py-2 mx-2 md:mx-4 lg:mx-6"
+          onClick={approveReport}
+        >
+          Aprobar y notificar
+        </button>
+        <button
+          className="text-white font-medium rounded bg-red-600 hover:bg-red-700 px-4 py-2 mx-2 md:mx-4 lg:mx-6"
+          onClick={removeReport}
+        >
+          Descartar y eliminar
+        </button>
       </div>
     </div>
   );

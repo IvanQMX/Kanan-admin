@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import ReportCase from "./ActiveReports/AllReports";
-import Report from "./Report";
+import Report from "./DetailedReport/Report";
 
 function App() {
   const [session, setSession] = useState(sessionStorage.getItem("studentID"));
