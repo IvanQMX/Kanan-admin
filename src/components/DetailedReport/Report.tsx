@@ -96,10 +96,22 @@ export default function Report() {
 
   const approveReport = () => {
     displayLoadingMessage("Cargando");
-    setTimeout(() => {
-      Swal.close();
-      displaySuccessMessage("Reporte aprobado y notificado");
-    }, 1500);
+    axios
+      .put(
+        "https://kanan.azurewebsites.net/api/ApproveReport?code=G6YfKS0kRKLvYUfSlpaBTo6NVmDc3emsvCMMH9M1DJOnAzFuOf8tFg==",
+        {
+          id,
+          studentID: report?.studentID,
+        }
+      )
+      .then((response) => {
+        Swal.close();
+        displaySuccessMessage("Reporte aprobado y notificado");
+      })
+      .catch((error) => {
+        displayErrorMessage("No se pudo aprobar y notificar el reporte. Inténtelo más tarde");
+        console.error(error);
+      });
   };
 
   const removeReport = () => {
