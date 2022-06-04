@@ -4,10 +4,10 @@
       "route": "/"
     },
     {
-      "route": "/reporte*"
+      "route": "/reportes"
     },
     {
-      "route": "/reportes"
+      "route": "/reporte/*"
     }
   ],
   "navigationFallback": {
