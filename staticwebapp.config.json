@@ -1,0 +1,17 @@
+{
+  "routes": [
+    {
+      "route": "/"
+    },
+    {
+      "route": "/reporte*"
+    },
+    {
+      "route": "/reportes"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/",
+    "exclude": ["*.{css,scss,js,jpg,png,gif,ico,svg}"]
+  }
+}
