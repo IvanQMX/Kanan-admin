@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ReactComponent as Logo } from "../svg/logo.svg";
 import { ReactComponent as HorizontalLogo } from "../svg/horizontal.svg";
 
@@ -17,6 +18,17 @@ export default function Navbar() {
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-100 focus:outline-none focus:bg-gray-800 focus:text-white">
+                  <span className="sr-only">Abrir menú</span>
+                  {open ? (
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <NavLink to="/">
@@ -24,24 +36,24 @@ export default function Navbar() {
                     <HorizontalLogo className="hidden sm:block h-6 w-auto fill-white" />
                   </NavLink>
                 </div>
-                  <div className="hidden sm:flex sm:ml-6 sm:items-center">
-                    <div className="flex space-x-4">
-                      {navigation.map((item) => (
-                        <NavLink
-                          key={item.name}
-                          to={item.href}
-                          className={({ isActive }) =>
-                            classNames(
-                              isActive ? "bg-blue-600" : "hover:bg-blue-400",
-                              "text-white px-3 py-2 rounded-md text-sm font-medium"
-                            )
-                          }
-                        >
-                          {item.name}
-                        </NavLink>
-                      ))}
-                    </div>
+                <div className="hidden sm:flex sm:ml-6 sm:items-center">
+                  <div className="flex space-x-4">
+                    {navigation.map((item) => (
+                      <NavLink
+                        key={item.name}
+                        to={item.href}
+                        className={({ isActive }) =>
+                          classNames(
+                            isActive ? "bg-blue-600" : "hover:bg-blue-400",
+                            "text-white px-3 py-2 rounded-md text-sm font-medium"
+                          )
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
                   </div>
+                </div>
               </div>
             </div>
           </div>
